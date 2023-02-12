@@ -1,6 +1,7 @@
 package com.atthornatus.apicadastropessoa.controllers;
 
-import com.atthornatus.apicadastropessoa.domain.endereco.DadosEnderecoDTO;import com.atthornatus.apicadastropessoa.domain.endereco.Endereco;
+import com.atthornatus.apicadastropessoa.domain.endereco.DadosEnderecoDTO;
+import com.atthornatus.apicadastropessoa.domain.endereco.Endereco;
 import com.atthornatus.apicadastropessoa.services.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,5 +26,12 @@ public class EnderecoController {
         var endereco = enderecoService.criarEnderecoParaUmaPessoa(id, dadosEnderecoDto);
         var uri = uriComponentsBuilder.path("/enderecos/{id}").buildAndExpand(endereco.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping("/pessoas/{id}")
+    public ResponseEntity<List<Endereco>> listarEnderecosDeUmaPessoa(@PathVariable Long id) {
+        List<Endereco> endereco = enderecoService.listarEnderecosDeUmaPessoa(id);
+
+        return ResponseEntity.ok().body(endereco);
     }
 }

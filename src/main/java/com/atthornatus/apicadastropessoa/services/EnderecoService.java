@@ -32,6 +32,16 @@ public class EnderecoService {
         return endereco;
     }
 
+    public List<Endereco> listarEnderecosDeUmaPessoa(Long id) {
+        Pessoa pessoa = pessoaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Objeto " + id + " não encontrado"));
+
+
+        List<Endereco> endereco = enderecoRepository.findByPessoa(pessoa);
+
+        return endereco;
+    }
+
     private Endereco fromDto(DadosEnderecoDTO dadosEnderecoDto) {
         Pessoa pessoa = new Pessoa();
         Endereco endereco = new Endereco(null, dadosEnderecoDto.logradouro(), dadosEnderecoDto.cep(),
@@ -39,4 +49,6 @@ public class EnderecoService {
 
         return endereco;
     }
+
+
 }
