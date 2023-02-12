@@ -4,13 +4,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
 
-public record DadosCadastraisPessoaDto(
+public record AtualizarDadosDto(
+        Long id,
         String nome,
         @JsonFormat(pattern = "dd/MM/yyyy")
-        LocalDate dataDeNascimento,
-        String logradouro,
-        String cep,
-        String numero,
-        String cidade
+        LocalDate dataDeNascimento
 ) {
 }
