@@ -9,8 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
-@Table(name="enderecos")
-@Entity(name="Endereco")
+@Table(name = "enderecos")
+@Entity(name = "Endereco")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,7 +24,7 @@ public class Endereco {
     private String numero;
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="cliente_id")
+    @JoinColumn(name = "cliente_id")
     private Pessoa pessoa;
 
     private String cidade;

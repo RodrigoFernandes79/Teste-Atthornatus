@@ -25,12 +25,14 @@ public class Pessoa {
     private String nome;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeNascimento;
-    @OneToMany(mappedBy="pessoa", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
     private List<Endereco> enderecos = new ArrayList<>();
 
-    public Pessoa(Long id,String nome, LocalDate dataDeNascimento) {
-       this.id = id;
-       this.nome = nome;
-       this.dataDeNascimento = dataDeNascimento;
+    public Pessoa(Long id, String nome, LocalDate dataDeNascimento) {
+        this.id = id;
+        this.nome = nome;
+        this.dataDeNascimento = dataDeNascimento;
     }
+
+
 }
