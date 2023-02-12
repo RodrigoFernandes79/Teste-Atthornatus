@@ -9,6 +9,7 @@ import com.atthornatus.apicadastropessoa.repositories.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,6 +43,12 @@ public class PessoaService {
         }).orElseThrow(() -> new RuntimeException("Objeto" + id + "não encontrado"));
     }
 
+    public List<Pessoa> listarPessoas() {
+        List<Pessoa> pessoa =  pessoaRepository.findAll();
+
+        return pessoa;
+    }
+
     private Pessoa fromDto(DadosCadastraisPessoaDto dadosCadastraisPessoaDto) {
         Pessoa pessoa = new Pessoa(null, dadosCadastraisPessoaDto.nome(),
                 dadosCadastraisPessoaDto.dataDeNascimento());
@@ -60,4 +67,5 @@ public class PessoaService {
 
         return pessoa;
     }
+
 }
