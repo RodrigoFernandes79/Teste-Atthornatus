@@ -1,5 +1,6 @@
 package com.atthornatus.apicadastropessoa.domain.pessoa;
 
+import com.atthornatus.apicadastropessoa.domain.endereco.enums.EnderecoPrincipal;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ public record DadosCadastraisPessoaDto(
         String logradouro,
         String cep,
         String numero,
-        String cidade
+        String cidade,
+       EnderecoPrincipal enderecoPrincipal
 ) {
 }

@@ -1,6 +1,7 @@
 package com.atthornatus.apicadastropessoa.services;
 
 import com.atthornatus.apicadastropessoa.domain.endereco.Endereco;
+import com.atthornatus.apicadastropessoa.domain.endereco.enums.EnderecoPrincipal;
 import com.atthornatus.apicadastropessoa.domain.pessoa.AtualizarDadosDto;
 import com.atthornatus.apicadastropessoa.domain.pessoa.DadosCadastraisPessoaDto;
 import com.atthornatus.apicadastropessoa.domain.pessoa.Pessoa;
@@ -22,6 +23,7 @@ public class PessoaService {
     public Pessoa criarPessoa(DadosCadastraisPessoaDto dadosCadastraisPessoaDto) {
 
         var pessoa = fromDto(dadosCadastraisPessoaDto);
+
         pessoaRepository.save(pessoa);
         enderecoRepository.saveAll(pessoa.getEnderecos());
 
@@ -53,8 +55,10 @@ public class PessoaService {
                 dadosCadastraisPessoaDto.dataDeNascimento());
         Endereco endereco = new Endereco(null, dadosCadastraisPessoaDto.logradouro(),
                 dadosCadastraisPessoaDto.cep(), dadosCadastraisPessoaDto.numero(), pessoa,
-                dadosCadastraisPessoaDto.cidade());
+                dadosCadastraisPessoaDto.cidade(), dadosCadastraisPessoaDto.enderecoPrincipal());
+
         pessoa.getEnderecos().add(endereco);
+
 
         return pessoa;
     }

@@ -1,5 +1,6 @@
 package com.atthornatus.apicadastropessoa.domain.endereco;
 
+import com.atthornatus.apicadastropessoa.domain.endereco.enums.EnderecoPrincipal;
 import com.atthornatus.apicadastropessoa.domain.pessoa.Pessoa;
 
 public record DadosEnderecoDTO(
@@ -8,6 +9,7 @@ public record DadosEnderecoDTO(
         String numero,
         String cidade,
 
-        Pessoa pessoa
+        Pessoa pessoa,
+       EnderecoPrincipal enderecoPrincipal
 ) {
 }

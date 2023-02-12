@@ -1,10 +1,11 @@
 package com.atthornatus.apicadastropessoa.domain.endereco;
 
+import com.atthornatus.apicadastropessoa.domain.endereco.enums.EnderecoPrincipal;
 import com.atthornatus.apicadastropessoa.domain.pessoa.Pessoa;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+
 
 @Table(name = "enderecos")
 @Entity(name = "Endereco")
@@ -26,4 +27,14 @@ public class Endereco {
     private Pessoa pessoa;
 
     private String cidade;
+    @Enumerated(EnumType.STRING)
+    private EnderecoPrincipal enderecoPrincipal;
+
+
 }
+
+
+
+
+
+

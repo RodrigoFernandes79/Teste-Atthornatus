@@ -45,9 +45,10 @@ public class EnderecoService {
     private Endereco fromDto(DadosEnderecoDTO dadosEnderecoDto) {
         Pessoa pessoa = new Pessoa();
         Endereco endereco = new Endereco(null, dadosEnderecoDto.logradouro(), dadosEnderecoDto.cep(),
-                dadosEnderecoDto.numero(), pessoa, dadosEnderecoDto.cidade());
+                dadosEnderecoDto.numero(), pessoa, dadosEnderecoDto.cidade(), dadosEnderecoDto.enderecoPrincipal());
 
         return endereco;
+
     }
 
 
