@@ -41,7 +41,7 @@ public class PessoaService {
             Pessoa pessoaObj = pessoaRepository.save(obj);
 
             return pessoaObj;
-        }).orElseThrow(() -> new RuntimeException("Objeto" + id + "não encontrado"));
+        }).orElseThrow(() -> new RuntimeException());
     }
 
     public List<Pessoa> listarPessoas() {
