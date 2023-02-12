@@ -2,7 +2,7 @@ package com.atthornatus.apicadastropessoa.domain.pessoa;
 
 import com.atthornatus.apicadastropessoa.domain.endereco.enums.EnderecoPrincipal;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.Valid;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

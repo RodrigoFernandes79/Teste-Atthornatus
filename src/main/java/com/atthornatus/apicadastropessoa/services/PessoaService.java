@@ -1,7 +1,7 @@
 package com.atthornatus.apicadastropessoa.services;
 
 import com.atthornatus.apicadastropessoa.domain.endereco.Endereco;
-import com.atthornatus.apicadastropessoa.domain.endereco.enums.EnderecoPrincipal;
+
 import com.atthornatus.apicadastropessoa.domain.pessoa.AtualizarDadosDto;
 import com.atthornatus.apicadastropessoa.domain.pessoa.DadosCadastraisPessoaDto;
 import com.atthornatus.apicadastropessoa.domain.pessoa.Pessoa;
@@ -9,6 +9,7 @@ import com.atthornatus.apicadastropessoa.repositories.EnderecoRepository;
 import com.atthornatus.apicadastropessoa.repositories.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -38,16 +39,20 @@ public class PessoaService {
             obj.setNome(pessoa.getNome());
             obj.setDataDeNascimento(pessoa.getDataDeNascimento());
 
-            Pessoa pessoaObj = pessoaRepository.save(obj);
+            return pessoaRepository.save(obj);
+        }).orElseThrow(RuntimeException::new);
+    }
 
-            return pessoaObj;
-        }).orElseThrow(() -> new RuntimeException());
+    public Pessoa consultarPessoa(Long id) {
+
+        return pessoaRepository.findById(id)
+                .orElseThrow(RuntimeException::new);
+
     }
 
     public List<Pessoa> listarPessoas() {
-        List<Pessoa> pessoa = pessoaRepository.findAll();
 
-        return pessoa;
+        return pessoaRepository.findAll();
     }
 
     private Pessoa fromDto(DadosCadastraisPessoaDto dadosCadastraisPessoaDto) {
@@ -65,11 +70,9 @@ public class PessoaService {
 
 
     public Pessoa fromDTO(AtualizarDadosDto atualizarDadosDto) {
-        var pessoa = new Pessoa(null, atualizarDadosDto.nome(),
+
+        return new Pessoa(null, atualizarDadosDto.nome(),
                 atualizarDadosDto.dataDeNascimento(), null);
-
-        return pessoa;
     }
-
 
 }

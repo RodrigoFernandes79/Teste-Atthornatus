@@ -2,7 +2,7 @@ package com.atthornatus.apicadastropessoa.domain.endereco;
 
 import com.atthornatus.apicadastropessoa.domain.endereco.enums.EnderecoPrincipal;
 import com.atthornatus.apicadastropessoa.domain.pessoa.Pessoa;
-import jakarta.validation.Valid;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -16,7 +16,7 @@ public record DadosEnderecoDTO(
         String cidade,
 
         Pessoa pessoa,
-       @NotNull(message = "{principal.obrigatorio}")
-       EnderecoPrincipal enderecoPrincipal
+        @NotNull(message = "{principal.obrigatorio}")
+        EnderecoPrincipal enderecoPrincipal
 ) {
 }

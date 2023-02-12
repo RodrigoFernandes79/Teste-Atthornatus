@@ -22,7 +22,7 @@ public class EnderecoService {
 
     public Endereco criarEnderecoParaUmaPessoa(Long id, DadosEnderecoDTO dadosEnderecoDto) {
         Pessoa pessoa = pessoaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException());
+                .orElseThrow(RuntimeException::new);
 
         Endereco endereco = fromDto(dadosEnderecoDto);
         endereco.setPessoa(pessoa);
@@ -34,20 +34,17 @@ public class EnderecoService {
 
     public List<Endereco> listarEnderecosDeUmaPessoa(Long id) {
         Pessoa pessoa = pessoaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException());
+                .orElseThrow(RuntimeException::new);
 
 
-        List<Endereco> endereco = enderecoRepository.findByPessoa(pessoa);
-
-        return endereco;
+        return enderecoRepository.findByPessoa(pessoa);
     }
 
     private Endereco fromDto(DadosEnderecoDTO dadosEnderecoDto) {
         Pessoa pessoa = new Pessoa();
-        Endereco endereco = new Endereco(null, dadosEnderecoDto.logradouro(), dadosEnderecoDto.cep(),
-                dadosEnderecoDto.numero(), pessoa, dadosEnderecoDto.cidade(), dadosEnderecoDto.enderecoPrincipal());
 
-        return endereco;
+        return new Endereco(null, dadosEnderecoDto.logradouro(), dadosEnderecoDto.cep(),
+                dadosEnderecoDto.numero(), pessoa, dadosEnderecoDto.cidade(), dadosEnderecoDto.enderecoPrincipal());
 
     }
 

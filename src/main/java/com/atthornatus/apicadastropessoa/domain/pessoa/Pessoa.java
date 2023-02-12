@@ -32,5 +32,4 @@ public class Pessoa {
         this.dataDeNascimento = dataDeNascimento;
     }
 
-
 }
