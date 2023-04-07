@@ -47,11 +47,11 @@ http://localhost:8080/pessoas/{id}
 ```
 http://localhost:8080/pessoas
 ```
-#### Criar endereços para uma pessoa (PUT):
+#### Criar endereços para uma pessoa (POST):
 ```
 http://localhost:8080/enderecos/{id}
 ```
-#### Criar endereços para uma pessoa (PUT):
+#### Criar endereços para uma pessoa (POST):
 ```
 http://localhost:8080/enderecos/pessoas/{id}
 ```
