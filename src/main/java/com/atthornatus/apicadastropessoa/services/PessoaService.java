@@ -55,7 +55,7 @@ public class PessoaService {
         return pessoaRepository.findAll();
     }
 
-    private Pessoa fromDto(DadosCadastraisPessoaDto dadosCadastraisPessoaDto) {
+    public  Pessoa fromDto(DadosCadastraisPessoaDto dadosCadastraisPessoaDto) {
         Pessoa pessoa = new Pessoa(null, dadosCadastraisPessoaDto.nome(),
                 dadosCadastraisPessoaDto.dataDeNascimento());
         Endereco endereco = new Endereco(null, dadosCadastraisPessoaDto.logradouro(),
