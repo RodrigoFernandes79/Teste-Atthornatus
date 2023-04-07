@@ -23,7 +23,7 @@ public class Endereco {
     private String numero;
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 
     private String cidade;

@@ -1,13 +1,12 @@
 package com.atthornatus.apicadastropessoa.repositories;
 
-import com.atthornatus.apicadastropessoa.domain.endereco.Endereco;
-import com.atthornatus.apicadastropessoa.domain.pessoa.Pessoa;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.atthornatus.apicadastropessoa.domain.endereco.Endereco;
 
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
 
-    List<Endereco> findByPessoa(Pessoa pessoa);
+	List<Endereco> findByPessoaId(Long idPessoa);
 }
