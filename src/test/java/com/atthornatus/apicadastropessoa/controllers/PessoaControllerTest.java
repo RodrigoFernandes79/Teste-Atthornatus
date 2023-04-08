@@ -67,17 +67,17 @@ public class PessoaControllerTest {
 	@Test
 	@DisplayName("Deveria devolver codigo http 400 quando informacoes estao invalidas")
 	void testCriarPessoa_Cenario2() throws IOException, Exception {
-// mockando a classe service com mockito
-Pessoa pessoa = new Pessoa(
-	null, "Adolpho", LocalDate.of(1998, 11, 8));
-when(pessoaService.criarPessoa(any())).thenReturn(pessoa);
+		// mockando a classe service com mockito
+		Pessoa pessoa = new Pessoa(
+				null, "Adolpho", LocalDate.of(1998, 11, 8));
+		when(pessoaService.criarPessoa(any())).thenReturn(pessoa);
 
-var response = mockMvc.perform(post("/pessoas")
-.contentType(MediaType.APPLICATION_JSON)
-.content(dadosEntradaJTester.write(new DadosCadastraisPessoaDto(null,
-		LocalDate.of(1998, 11, 8),null, null, null,
-		"CidadeTeste", EnderecoPrincipal.SIM)).getJson()))
-.andReturn().getResponse();
+		var response = mockMvc.perform(post("/pessoas")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(dadosEntradaJTester.write(new DadosCadastraisPessoaDto(null,
+						LocalDate.of(1998, 11, 8), null, null, null,
+						"CidadeTeste", EnderecoPrincipal.SIM)).getJson()))
+				.andReturn().getResponse();
 
 		assertThat(response.getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value());
 
