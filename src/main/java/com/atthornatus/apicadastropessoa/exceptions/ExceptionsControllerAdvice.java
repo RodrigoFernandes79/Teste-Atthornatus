@@ -1,9 +1,7 @@
 package com.atthornatus.apicadastropessoa.exceptions;
 
-
 import java.util.List;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -11,29 +9,26 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-@Profile("dev")
-public class ExceptionsControllerAdvice  {
+public class ExceptionsControllerAdvice {
 
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ResponseEntity<List<DadosCampoValidacao>> tratamentoErroValidacao400(MethodArgumentNotValidException ex) {
 
+		var errors = ex.getFieldErrors();
+		var erro = errors.stream().map(DadosCampoValidacao::new).toList();
 
-		@ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<List<DadosCampoValidacao>> tratamentoErroValidacao400(MethodArgumentNotValidException ex) {
+		return ResponseEntity.badRequest().body(erro);
+	}
 
-				var errors = ex.getFieldErrors();
-        var erro = errors.stream().map(DadosCampoValidacao::new).toList();
+	private record DadosCampoValidacao(String erro, String mensagem) {
 
-        return ResponseEntity.badRequest().body(erro);
-    }
+		public DadosCampoValidacao(FieldError erro) {
+			this(erro.getField(), erro.getDefaultMessage());
+		}
+	}
 
-    private record DadosCampoValidacao(String erro, String mensagem) {
-
-        public DadosCampoValidacao(FieldError erro) {
-            this(erro.getField(), erro.getDefaultMessage());
-        }
-    }
-
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> tratarErroNotFound404() {
-        return ResponseEntity.notFound().build();
-    }
+	@ExceptionHandler(RuntimeException.class)
+	public ResponseEntity<String> tratarErroNotFound404() {
+		return ResponseEntity.notFound().build();
+	}
 }

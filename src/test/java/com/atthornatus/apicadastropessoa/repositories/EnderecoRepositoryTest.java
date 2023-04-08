@@ -13,12 +13,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.atthornatus.apicadastropessoa.domain.endereco.Endereco;
 import com.atthornatus.apicadastropessoa.domain.pessoa.Pessoa;
 
 @AutoConfigureMockMvc
 @DataJpaTest
+@ActiveProfiles("test")
 public class EnderecoRepositoryTest {
 
 	@MockBean
